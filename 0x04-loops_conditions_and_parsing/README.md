@@ -199,4 +199,36 @@ fi
 
 These operators can be used within if statements or in other control structures to conditionally execute code based on the comparison results.
 
+### MANDATORY TASKS
+
+[Task 0: Generation SSH RSA key pair]()
+
+When you generate an RSA key pair using the ssh-keygen command, the private key and the public key will be saved in the .ssh directory in your home directory (also known as the user's home folder).
+
+The default file names for the private and public keys are:
+
+1. Private Key: `id_rsa`
+2. Public Key: `id_rsa.pub`
+
+Here's the default location for the keys:
+
+=> Private Key: `~/.ssh/id_rsa`
+=> Public Key: `~/.ssh/id_rsa.pub`
+
+The `~` symbol represents your home directory. For example, if your username is "john," then the private key will be located at `/home/john/.ssh/id_rsa` and the public key will be at `/home/john/.ssh/id_rsa.pub`.
+
+You can find these files by navigating to the .ssh directory in your terminal using the cd command:
+
+`cd ~/.ssh`
+
+To view the contents of the private and public keys, you can use any text editor, such as cat, less, or vi. For example:
+
+```
+cat id_rsa        # Display the private key
+cat id_rsa.pub    # Display the public key
+```
+
+[Note That:]() Keep in mind that the private key is sensitive information and should be kept secure. Never share your private key with others, as it grants access to systems and accounts associated with the corresponding public key. On the other hand, the public key can be safely shared with others or added to remote systems to enable secure authentication.
+
+
 [Reference](https://chat.openai.com/)
