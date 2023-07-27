@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # A Bash script that displays Best School 10 times.
 
-i=1
-until [ $i -eq 10 ];
+i=0
+until ((i == 10)); # or until [ $i -eq 10 ]; i ++ for print
 do
 	echo "Best School"
-	(( i++ ))
+	((i++))
 done
