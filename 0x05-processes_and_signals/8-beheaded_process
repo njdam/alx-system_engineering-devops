@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# A Bash script that displays its own PID.
+# A Bash script that kills the process 7-highlander.
 
-echo "$$"
+kill -9 "$(pgrep -f highlander)"
