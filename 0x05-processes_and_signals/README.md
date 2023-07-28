@@ -42,3 +42,40 @@ The `exit` command is used to terminate a script or a shell session. When used i
 
 The trap command is used to set up actions to be taken when a signal is received by a process. It allows you to handle signals in a custom way and take appropriate actions when specific signals are received.
 
+## SIGNAL NUMBERS
+
+Unix-like operating systems, there are various signal numbers that can be used to communicate with processes and control their behavior.
+
+Here are some commonly used signal numbers along with their corresponding names:
+
+1. [`SIGHUP` (1): Hangup signal]()
+This signal is typically sent to a process when its controlling terminal is closed.
+
+2. [`SIGINT` (2): Interrupt signal]()
+This signal is sent to a process when the user presses Ctrl+C on the terminal. It is used to request the process to terminate gracefully.
+
+3. [`SIGQUIT` (3): Quit signal]()
+This signal is similar to SIGINT but is typically used to request the process to generate a core dump for debugging purposes.
+
+4. [`SIGKILL` (9): Kill signal]()
+This signal cannot be caught or ignored by the process and immediately terminates it.
+
+5. [`SIGTERM` (15): Termination signal]()
+This signal is typically sent to request the process to terminate gracefully. It allows the process to perform cleanup operations before exiting.
+
+6. [`SIGSTOP` (19): Stop signal]()
+This signal is used to suspend the execution of a process. It cannot be caught or ignored.
+
+7. [`SIGCONT` (18): Continue signal]()
+This signal is used to resume the execution of a previously stopped process.
+
+8. [`SIGUSR1` (10) and `SIGUSR2` (12): User-defined signals]()
+These signals can be used by user applications to communicate custom actions to processes.
+
+9. [`SIGPIPE` (13): Broken pipe signal]()
+This signal is sent to a process when it attempts to write to a pipe that has been closed.
+
+10. [`SIGALRM` (14): Alarm signal]()
+This signal is sent to a process when the timer set by the alarm function expires.
+
+[Note That:]() These are just a few examples of commonly used signals. There are many other signals defined in Unix systems, each with its specific purpose. Different signals are used for different scenarios and tasks, such as process control, communication, error handling, and more. Each signal serves a specific role in managing and interacting with processes in the system.
