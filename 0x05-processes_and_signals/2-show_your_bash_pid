@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-
-# shellcheck disable=SC2009
+ps aux | awk '/[b]ash/'
+#shellcheck disable=SC2009
 
 # A Bash script that displays lines containing the bash word,
 # thus allowing you to easily get the PID of your Bash process.
 
 # Use ps command to display lines containing the word "bash"
-ps aux | awk '/[b]ash/'
+# ps aux | awk '/[b]ash/'
 # ps aux | g//rep bash
