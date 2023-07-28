@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # A Bash (init) script 101-manage_my_process that manages manage_my_process.
 
-# If positional arguments is not one
-if [ $# -ne 1 ]; then
-	echo "Usage: manage_my_process {start|stop|restart}"
-	exit
-fi
+# If positional arguments is not one "To Enable Uncomment 4 lines below"
+#if [ $# -ne 1 ]; then
+#	echo "Usage: manage_my_process {start|stop|restart}"
+#	exit
+#fi
 
 # To start the `manage_my_process` script and create `my_process.pid` file
 starter ()
