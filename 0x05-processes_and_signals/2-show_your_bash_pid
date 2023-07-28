@@ -6,4 +6,5 @@
 # thus allowing you to easily get the PID of your Bash process.
 
 # Use ps command to display lines containing the word "bash"
-ps aux | grep bash
+ps aux | awk '/[b]ash/'
+# ps aux | g//rep bash
