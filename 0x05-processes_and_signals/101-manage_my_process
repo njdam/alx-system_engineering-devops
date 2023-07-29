@@ -1,57 +1,29 @@
 #!/usr/bin/env bash
 # A Bash (init) script 101-manage_my_process that manages manage_my_process.
 
-# If positional arguments is not one "To Enable Uncomment 4 lines below"
-if [ $# -ne 1 ]; then
-	echo "Usage: manage_my_process {start|stop|restart}"
-	exit
-fi
-
-# To start the `manage_my_process` script and create `my_process.pid` file
-starter ()
-{
-	./manage_my_process &
-	echo $! >> /var/run/my_process.pid
-}
-
-# To remove created my_process.pid file with it's pid
-remover ()
-{
-	rm /var/run/my_process.pid
-}
-
-# To stop `manage_my_process` script running in background
-stopper ()
-{
-	pkill -f ./manage_my_process
-	remover
-}
-
-# To restart `manage_my_process` script running in background
-restarter ()
-{
-	stopper  # This stop and remove my_process.pid file
-	starter
-}
-
-# To check 1st positional argument if is the one expected for controlling
-# `manage_my_process` script
-case "$1" in
-	start)
-		starter
+if (("$#" == 1));
+then
+	if [ "$1" == "start" ];
+	then
+		./manage_my_process &
+		echo $! > /var/run/my_process.pid
 		echo "manage_my_process started"
-		;;
-	stop)
-		stopper
+
+	elif [ "$1" == "stop" ];
+	then
+		pkill -f ./manage_my_process
+		rm /var/run/my_process.pid
 		echo "manage_my_process stopped"
-		;;
-	restart)
-		restarter
+
+	elif [ "$1" == "restart" ];
+	then
+		pkill -f ./manage_my_process
+		rm /var/run/my_process.pid
+		./manage_my_process &
+		echo $! >> /var/run/my_process.pid
 		echo "manage_my_process restarted"
-		;;
-	*)
-		# If 1st positional argument is not one of above status
-		echo "Usage: manage_my_process {start|stop|restart}"
-		exit
-		;;
-esac
+	fi
+else
+	# Else If 1st positional argument is not one of above status
+	echo "Usage: manage_my_process {start|stop|restart}"
+fi
