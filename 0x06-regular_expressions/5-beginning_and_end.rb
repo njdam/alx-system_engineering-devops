@@ -2,4 +2,4 @@
 # A Ruby script that check if the argument matches the regular expression
 # for Not quite HBTN yet (case-sensitive).
 
-puts ARGV[0].scan(/\Ah.*n\z/).join
+puts ARGV[0].match(/\Ah[b?8]n\z/)
