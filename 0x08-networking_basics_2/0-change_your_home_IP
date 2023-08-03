@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# A Bash script that configures an Ubuntu server with the below requirements
+
+sed -i 's/127.0.0.1/127.0.0.2/g' /etc/hosts
+sed -i 's/157.240.11.35/8.8.8.8/g' /etc/hosts
