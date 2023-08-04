@@ -1,18 +1,10 @@
 #!/usr/bin/env bash
 # A Bash script that pings an IP address passed as an argument.
 
-# Check a script if is executed with an argument which is an IP address
-if [ -z "$1" ]; then
-    echo "Usage: $0 {IP_ADDRESS}"
-    exit 1
+if [ $# -ne 1 ];
+then
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+	exit 1
 fi
 
-# Is a function that pings Ip address and display results
-pings_ip()
-{
-    # Displayed on 1stLine like, `echo "PING $1 ($1) 56(84) bytes of data.`" 
-    ping -c 5 "$1"
-}
-
-# Calling the function to ping an Ip address
-pings_ip "$1"
+ping -c 5 $1
