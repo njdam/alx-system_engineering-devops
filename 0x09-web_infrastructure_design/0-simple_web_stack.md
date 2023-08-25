@@ -1,6 +1,6 @@
 # 0. Simple web stack
 
-<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVMr8K9go=/?moveToViewport=999,-1602,1206,702&embedId=140343890625" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+![0-simple_web_stack](https://github.com/njdam/alx-system_engineering-devops/assets/16462040/51eb5882-5550-416b-b337-a791221c0aa6)
 
 ## [I. Design of Single Server Web Infrastructure for www.foobar.com:]()
 
