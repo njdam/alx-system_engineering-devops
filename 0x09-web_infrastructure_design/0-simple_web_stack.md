@@ -1,7 +1,6 @@
 # 0. Simple web stack
 
-![imgr](./0-simple_web_stack.png)
-<blockquote class="imgur-embed-pub" lang="en" data-id="jyKGqM1"><a href="https://imgur.com/jyKGqM1">Single Web Infrastructure Design</a></blockquote>
+<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVMr8K9go=/?moveToViewport=999,-1602,1206,702&embedId=140343890625" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
 
 ## [I. Design of Single Server Web Infrastructure for www.foobar.com:]()
 
