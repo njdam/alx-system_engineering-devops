@@ -1,5 +1,7 @@
 # 0. Simple web stack
 
+![Single Web Infrastructure Design](https://imgur.com/jyKGqM1)
+
 ## [I. Design of Single Server Web Infrastructure for www.foobar.com:]()
 
 1. ***Server (8.8.8.8):***
@@ -72,4 +74,4 @@ When maintenance is needed (e.g., deploying new code), the web server needs to b
 * To scale, horizontal scaling (adding more servers) and load balancing are required.
 
 
-[Note That:]()In summary, while a single server with a LAMP stack can power a basic website, it comes with limitations such as potential downtime, scalability challenges, and a single point of failure. To address these issues, implementing redundant systems, load balancing, and a more distributed architecture is necessary for a robust and scalable web infrastructure.
+[Note That:]() In summary, while a single server with a LAMP stack can power a basic website, it comes with limitations such as potential downtime, scalability challenges, and a single point of failure. To address these issues, implementing redundant systems, load balancing, and a more distributed architecture is necessary for a robust and scalable web infrastructure.
