@@ -1,6 +1,6 @@
 # 0. Simple web stack
 
-![imgr](https://imgur.com/jyKGqM1)
+![imgr](./0-simple_web_stack.png)
 <blockquote class="imgur-embed-pub" lang="en" data-id="jyKGqM1"><a href="https://imgur.com/jyKGqM1">Single Web Infrastructure Design</a></blockquote>
 
 ## [I. Design of Single Server Web Infrastructure for www.foobar.com:]()
