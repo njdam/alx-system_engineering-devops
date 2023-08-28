@@ -1,5 +1,7 @@
 # Task 2: Secured and monitored web infrastructure
 
+![2-secured_and_monitored_web_infrastructure](https://github.com/njdam/alx-system_engineering-devops/assets/16462040/46ed6cb5-f9c3-4ec1-99a9-eee81d918b1f)
+
 ## I. [Design of Three-Server Web Infrastructure for www.foobar.com:]()
 
 1. ***Load Balancer:***

@@ -1,8 +1,8 @@
 # 0. Simple web stack
 
-![0-simple_web_stack](https://github.com/njdam/alx-system_engineering-devops/assets/16462040/51eb5882-5550-416b-b337-a791221c0aa6)
+![0-simple_web_stack](https://github.com/njdam/alx-system_engineering-devops/assets/16462040/65dcec6a-ac81-40bd-83fa-242702c40b84)
 
-## [I. Design of Single Server Web Infrastructure for www.foobar.com:]()
+## I. [Design of Single Server Web Infrastructure for www.foobar.com:]()
 
 1. ***Server (8.8.8.8):***
 
@@ -53,7 +53,7 @@ A server is a powerful computer that hosts resources and services accessible ove
 * When the user accesses `www.foobar.com`, their `browser` sends an `HTTP request` to the `server`, which `processes the request` and sends back an `HTTP response` containing the `web page content`.
 
 
-## [II. Issues with this Single Server Infrastructure:]()
+## II. [Issues with this Single Server Infrastructure:]()
 
 1. ***Single Point of Failure (SPOF):***
 

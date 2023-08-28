@@ -1,6 +1,6 @@
 # Task 1: Three Server Web Infrastructure Design
 
-![1-distributed_web_infrastructure](https://github.com/njdam/alx-system_engineering-devops/assets/16462040/886098ef-e7ff-4c8a-aa95-8bbc837d8842)
+![1-distributed_web_infrastructure](https://github.com/njdam/alx-system_engineering-devops/assets/16462040/67bb8df2-43fb-486c-bce0-e7caf278423e)
 
 ## I. [Web Infrastructure Diagram]()
 
@@ -53,7 +53,7 @@
 	* `Replica Node`: Handles read operations and provides a copy of the data from the primary node. It improves read performance and can act as a failover in case the primary node fails.
 
 
-## [Identified Issues for This Web infrastructure:]()
+## III. [Identified Issues for This Web infrastructure:]()
 
 1. ***Single Points of Failure (SPOF):***
 

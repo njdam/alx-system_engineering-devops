@@ -1,5 +1,7 @@
 # Task 3: Scale up
 
+![3-scale_up](https://github.com/njdam/alx-system_engineering-devops/assets/16462040/135ca2b4-d916-4445-9673-525e39507c07)
+
 ## I. [Design of Web Infrastructure with HAProxy Load Balancer and App/Web, Each in its Own server:]()
 
 1. ***Server:***
