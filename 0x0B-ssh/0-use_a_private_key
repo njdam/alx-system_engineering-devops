@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# It is server Ip address
+server_address="52.201.175.252"
+
+# Connecting to Server with username: `ubuntu` and
+# ip address: `52.201.175.252` using ssh and private key in ~/.ssh/school
+ssh -i ~/.ssh/school ubuntu@"52.201.175.252"
