@@ -1,0 +1,10 @@
+# Host Ip Adress or Server Ip Adress this config will be applied
+Host 52.201.175.252
+  # File location containing Private Key For A Host or Server
+  IdentityFile ~/.ssh/school
+  # Password Authentication Is Disabled to Enable Change it to Yes
+  PasswordAuthentication no
+  # Synchronizing local settings between the client and server
+  SendEnv LANG LC_*
+  # Host/Server ip stored in this file should be hashed for added security
+  HashKnownHosts yes
