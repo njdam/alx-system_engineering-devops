@@ -1,5 +1,5 @@
-# Host Ip Adress or Server Ip Adress this config will be applied
-Host 52.201.175.252
+# Host/Server Ip Address:54.146.66.192 or * for all ip will be applied to it
+Host *
   # File location containing Private Key For A Host or Server
   IdentityFile ~/.ssh/school
   # Password Authentication Is Disabled to Enable Change it to Yes

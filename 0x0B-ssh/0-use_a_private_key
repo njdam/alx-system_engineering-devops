@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-# Connecting to My School Server with username: `ubuntu`
-ssh -i ~/.ssh/school ubuntu@"52.201.175.252"
+# Connecting to My School Server with username: `ubuntu` with passph: betty
+ssh -i ~/.ssh/school ubuntu@"54.146.66.192"
