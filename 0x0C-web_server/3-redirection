@@ -2,25 +2,22 @@
 # Creating a configuration file for the redirection me to another page
 # The redirection must be a “301 Moved Permanently”
 
-# Applying updated and istalling nginx
-apt-get update
-apt-get -y install nginx
+CONFIG_FILE="/etc/nginx/sites-available/default"
+REDIRECT_URL="https://www.youtube.com/watch?v=QH2-TGUlwu4"
 
-# Creating nginx configuration file for a redirection
-echo 'server {
-    listen 80;
-    server_name _;
+# Applying update and istalling nginx if not installed
+if ! [ -x "$(command -v nginx)" ]; then
+	sudo apt-get update
+	sudo apt-get -y install nginx
+fi
 
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-    }
-}' | sudo tee /etc/nginx/sites-available/redirect_me > /dev/null
+service nginx start
 
-# Createing a symbolic link to enable nginx configuration
-sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
+REDIRECT_CONFIG="location /redirect_me {
+	return 301 $REDIRECT_URL permanent;
+}"
 
-# Testing the Nginx configuration
-sudo nginx -t
+# Adding redirection configuration to nginx config file
+sed -i "$REDIRECT_CONFIG" "$CONFIG_FILE"
 
-# Reloading Nginx to apply the changes
 sudo systemctl reload nginx
