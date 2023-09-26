@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# To Install nginx web server
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# Configuring Nginx to listen on port 80 and serve "Hello World!" as content
+# tee is used to write text to file index.html with superuser priveleges
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+# Restarting Nginx without using systemctl
+sudo /etc/init.d/nginx restart

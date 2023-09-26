@@ -7,13 +7,13 @@ if [ "$#" -ne 4 ]; then
 	exit 1
 fi
 
-# Assigning parameters to variables
+# Assigning parameters or arguments to variables
 FILE_PATH="$1"
 SERVER_IP="$2"
 USERNAME="$3"
 SSH_KEY_PATH="$4"
 
-# Disable strict host key for checking using scp
+# Disable strict host key checking for being used scp
 SSH_OPTIONS="-o StrictHostKeyChecking=no -i $SSH_KEY_PATH"
 
 # Transfering file to server's home dir(~) by using scp
