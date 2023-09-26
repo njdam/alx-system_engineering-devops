@@ -2,22 +2,46 @@
 # Creating a configuration file for the redirection me to another page
 # The redirection must be a “301 Moved Permanently”
 
-CONFIG_FILE="/etc/nginx/sites-available/default"
-REDIRECT_URL="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+# Updating snd Installing nginx
+apt-get update
+apt-get -y install nginx
 
-# Applying update and istalling nginx if not installed
-if ! [ -x "$(command -v nginx)" ]; then
-	sudo apt-get update
-	sudo apt-get -y install nginx
-fi
+# Allowing the Nginx for firewalls
+sudo ufw allow 'Nginx HTTP'
 
-service nginx start
+# Making directories
+mkdir -p /var/www/html/
 
-REDIRECT_CONFIG="location /redirect_me {
-	return 301 $REDIRECT_URL permanent;
+# change directory permissin
+sudo chmod -R 755 /var/www
+
+echo 'Hello World!' > /var/www/html/index.html
+
+NGINX_CONFIG=\
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+
+	if (\$request_filename ~ redirect_me){
+		rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+	}
 }"
 
-# Adding redirection configuration to nginx config file
-sed -i "$REDIRECT_CONFIG" "$CONFIG_FILE"
+# Replacing process
+bash -c "echo -e '$NGINX_CONFIG' > /etc/nginx/sites-enabled/default"
 
-sudo systemctl reload nginx
+# Applying the chsnges by starting or restarting
+if [ "$(pgrep -c nginx)" -le 0 ]; then
+	service nginx start
+else
+	service nginx restart
+fi
