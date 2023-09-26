@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# A bash script to transfer a file from our client to a server.
+
+# Checking if arguments or parameters are not equal to 4
+if [ "$#" -ne 4 ]; then
+	echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+	exit 1
+fi
+
+# Assigning parameters to variables
+FILE_PATH="$1"
+SERVER_IP="$2"
+USERNAME="$3"
+SSH_KEY_PATH="$4"
+
+# Disable strict host key for checking using scp
+SSH_OPTIONS="-o StrictHostKeyChecking=no -i $SSH_KEY_PATH"
+
+# Transfering file to server's home dir(~) by using scp
+scp $SSH_OPTIONS "$FILE_PATH" "$USERNAME@$SERVER_IP:~/"
