@@ -3,12 +3,12 @@
 # To contain a custom header
 
 # Updating and installing nginx server
-apt-get -y update
-apt-get install -y nginx
-service nginx start
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo service nginx start
 
 # Replacing the Current header with custom header
 sed -i "20i\        add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
 
 # Restaring nginx web server
-service nginx restart
+sudo service nginx restart
