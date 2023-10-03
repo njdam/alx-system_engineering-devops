@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# A Bash script that install and setting up load balancer HAproxy
+
+# Updating and Installing HAproxy load balancer
+sudo apt-get update
+sudo apt-get install -y haproxy
+
+# Writing a config file haproxy with content from echo by tee writer cmd
+echo ENABLED=1 | sudo tee /etc/default/haproxy
+
+# Replacing Disabled with Enabled in config file /etc/default/haproxy
+sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+
+# My file
+MyFile=/etc/haproxy/haproxy.cfg
+
+# Copying My file
+sudo cp $MyFile $MyFile.copy
+
+# Setting up the Custom Load balancing
+sudo sed -i -e '$a\listen appname 0.0.0.0:80\n\tmode http\n\tstats enable' $MyFile
+sudo sed -i -e '$a\\tbalance roundrobin\n\toption httpclose\n\toption forwardfor' $MyFile
+sudo sed -i -e '$a\\tserver 312909-web-01 52.72.28.52:80\n\tserver 312909-web-02 100.26.239.179:80' $MyFile
+
+# Restarting HAproxy load balancer
+sudo service haproxy start
