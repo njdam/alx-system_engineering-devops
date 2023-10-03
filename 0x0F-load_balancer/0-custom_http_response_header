@@ -8,7 +8,7 @@ sudo apt-get install -y nginx
 sudo service nginx start
 
 # Replacing the Current header with custom header
-sed -i "20i\        add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+sed -i "20i\       add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
 
 # Restaring nginx web server
 sudo service nginx restart
