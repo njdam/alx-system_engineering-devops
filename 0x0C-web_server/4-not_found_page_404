@@ -37,7 +37,7 @@ NGINX_CONFIG=\
 	}
 
 	if (\$request_filename ~ redirect_me){
-		rewrite ^https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+		rewrite ^'https://github.com/njdam/' permanent;
 	}
 
 	# Configuration of Nginx to have a custom page of 404 page
