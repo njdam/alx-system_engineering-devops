@@ -39,8 +39,8 @@ file { 'Nginx server config file':
   mode    => '0744',
   owner   => 'www-data',
   content =>
-  "server {
-  	listen 80 default_server;
+"server {
+	listen 80 default_server;
 	listen [::]:80 default_server;
 
 	root /var/www/html;
@@ -49,11 +49,11 @@ file { 'Nginx server config file':
 	server_name _;
 
 	location / {
-]		try_files \$uri \$uri/ =404;
+		try_files \$uri \$uri/ =404;
 	}
 
 	if (\$request_filename ~ redirect_me){
-		rewrite ^https://github.com/njdam/ permanent;
+		rewrite ^ https://github.com/njdam permanent;
 	}
 
 	error_page 404 /404.html;
@@ -61,7 +61,7 @@ file { 'Nginx server config file':
 		root /var/www/error/;
 		internal;
 	}
-  }"
+}"
 }
 
 # Restarting the nginx web server

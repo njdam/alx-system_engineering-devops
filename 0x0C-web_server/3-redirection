@@ -32,7 +32,7 @@ NGINX_CONFIG=\
 	}
 
 	if (\$request_filename ~ redirect_me){
-		rewrite ^'https://github.com/njdam/' permanent;
+		rewrite ^ https://github.com/njdam permanent;
 	}
 }"
 
