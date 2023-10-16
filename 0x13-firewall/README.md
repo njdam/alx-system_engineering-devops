@@ -87,3 +87,76 @@ Nginx HTTP (v6)            ALLOW       Anywhere (v6)
 443/tcp (v6)               ALLOW       Anywhere (v6)
 80/tcp (v6)                ALLOW       Anywhere (v6)
 ```
+
+## ADVANCED TASK
+
+To configure web-01 so that its firewall redirects port 8080/TCP to port 80/TCP, you can use the Uncomplicated Firewall (UFW). Here's how you can achieve this:
+
+1. **SSH into web-01:**
+```
+ssh ubuntu@web-01
+```
+
+2. **Edit the UFW configuration:**
+
+You will need to modify the UFW configuration file to set up the port forwarding rule. The configuration file is typically located at `/etc/ufw/before.rules`.
+
+
+3. **Open the UFW configuration file in a text editor using sudo:**
+```
+sudo vi /etc/ufw/before.rules
+```
+
+
+4. **Add the Port Forwarding Rule:**
+
+Add the following rule to forward traffic from port `8080` to port `80`. This rule **should be added before** the `*filter` section in the `before.rules` file.
+```
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -i eth0 -p tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
+```
+
+
+5. **Here's what the rule does:**
+
+It creates a new NAT table (`*nat`) to handle the port forwarding.
+The PREROUTING chain is used to modify packets as they come into the network interface (`-i eth0`).
+
+* `-A PREROUTING` appends a rule to the PREROUTING chain.
+* `-p tcp` specifies that this rule applies to TCP traffic.
+* `--dport 8080` specifies the destination port (port 8080).
+* `-j REDIRECT --to-port 80` redirects the traffic to port 80.
+
+
+6. **Save the File:**
+
+Save the changes to the `before.rules` file and exit the text editor.
+
+
+7. **Reload UFW:**
+
+Reload UFW to apply the changes:
+```
+sudo ufw reload
+```
+
+
+8. **Check UFW Status:**
+
+You can check the status of UFW to ensure that the changes are applied correctly:
+```
+sudo ufw status
+```
+
+
+9. **Testing:**
+
+From web-02, you can use curl to test the port forwarding:
+```
+curl -sI web-01.example.tech:8080
+```
+You should see a response similar to what you provided, indicating that the port forwarding from 8080 to 80 is working.
+
+[Please note that]() the configuration may vary depending on your specific server setup, so make sure to back up any configuration files before making changes and test thoroughly to ensure the port forwarding is working as expected
