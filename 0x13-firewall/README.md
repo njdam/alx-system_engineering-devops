@@ -71,3 +71,19 @@ sudo ufw status
 [Done]() After following these steps, UFW will be configured to block all incoming traffic except for SSH (Port 22), HTTPS (Port 443), and HTTP (Port 80).
 
 [Note That:]() Make sure to have console access or alternative methods to access the server if you are configuring this on a remote server, to prevent accidental lockout in case of any issues.
+
+## MANDATORY TASK
+```
+Status: active
+
+To                         Action      From
+--                         ------      ----
+Nginx HTTP                 ALLOW       Anywhere
+22/tcp                     ALLOW       Anywhere
+443/tcp                    ALLOW       Anywhere
+80/tcp                     ALLOW       Anywhere
+Nginx HTTP (v6)            ALLOW       Anywhere (v6)
+22/tcp (v6)                ALLOW       Anywhere (v6)
+443/tcp (v6)               ALLOW       Anywhere (v6)
+80/tcp (v6)                ALLOW       Anywhere (v6)
+```

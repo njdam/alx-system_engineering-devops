@@ -1,0 +1,18 @@
+# Install Uncomplicated Firewal (UFW) if not already installed:
+sudo apt update
+sudo apt install ufw
+
+# Setting Default Policies
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Allow Specific Ports
+sudo ufw allow 22/tcp  # Allow SSH (Port 22)
+sudo ufw allow 443/tcp  # Allow HTTPS SSL (Port 443)
+sudo ufw allow 80/tcp  # Allow HTTP (Port 80)
+
+# Enable Firewall (UFW)
+sudo ufw enable
+
+# Checking the Status of Firewall
+sudo ufw status
