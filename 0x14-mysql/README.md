@@ -92,3 +92,44 @@ To ensure that your database backup strategy works effectively, you should regul
 * **Documentation and Procedures:** Keep your backup procedures and documentation up to date. Ensure that your team is familiar with the backup and recovery process and that procedures are well-documented.
 
 [Note That:]() By regularly testing your backup strategy, you can be confident that your data is adequately protected and recoverable in case of unforeseen events or data loss scenarios.
+
+## MANDATORY TASKS
+
+<h3>TASK 4</h3>
+
+***Server 1:***
+
+Commenting out bind address & Add this in /etc/mysql/mysql-conf.d/mysql.cnf
+```
+#bind-address 	= 127.0.0.1
+server-id 	= 1
+log_bin		= /var/log/mysql/mysql-bin.log
+binlog_do_db 	= tyrell_corp
+```
+
+***Server 2:***
+
+Commenting out bind address & Add this in /etc/mysql/mysql-conf.d/mysql.cnf
+```
+#bind-address   = 127.0.0.1
+server-id       = 2
+relay-log       = /var/log/mysql/mysql-relay-bin.log
+log_bin         = /var/log/mysql/mysql-bin.log
+binlog_do_db    = tyrell_corp
+```
+
+and in mysql server 2
+
+```
+mysql> CHANGE MASTER TO MASTER_HOST='--.--.--.--', # Ip adress server 1
+    -> MASTER_USER='replica_user',  # User of replicator
+    -> MASTER_PASSWORD='****',  # Password of User
+    -> MASTER_LOG_FILE='mysql-bin.000001',  # LOG file name in server 1
+    -> MASTER_LOG_POS=154;  # POSITION number in server 1 on master satatus
+Query OK, 0 rows affected, 2 warnings (0.07 sec)
+
+mysql> START SLAVE;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SHOW SLAVE STATUS\G
+```
