@@ -17,11 +17,6 @@ if __name__ == '__main__':
         user = requests.get(f'{base_url}/users/{employee_id}')
         todos = requests.get(f'{base_url}/todos?userId={employee_id}')
 
-        # Checking status of requested employee id, failed to be fetched
-        if user.status_code != 200 or todos.status_code != 200:
-            print(f'Failed to fetch data for employee {employee_id}')
-            exit(1)
-
         # User data into json file
         user_data = user.json()
         todos_data = todos.json()
@@ -31,7 +26,7 @@ if __name__ == '__main__':
         total_tasks = len(todos_data)
 
         # Printing TODOs list progress of a given employ id
-        print(f"Employee {user_data['name']} is done with tasks ", end="")
+        print(f"Employee {user_data['name']} is done with tasks", end="")
         print(f"({len(tasks_completed)}/{total_tasks}):")
 
         for task in tasks_completed:
