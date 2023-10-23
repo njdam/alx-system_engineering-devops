@@ -31,7 +31,7 @@ todos_data = todos.json()
 tasks_completed = [todo for todo in todos_data if todo['completed']]
 total_tasks = len(todos_data)
 
-# Printing TODO list progress of a given employ id
+# Printing TODOs list progress of a given employ id
 print(f"Employee {user_data['name']} is done with tasks ", end="")
 print(f"({len(tasks_completed)}/{total_tasks}):")
 
