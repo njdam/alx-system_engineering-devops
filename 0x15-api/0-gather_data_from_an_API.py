@@ -30,4 +30,4 @@ if __name__ == '__main__':
         print(f"({len(tasks_completed)}/{total_tasks}):")
 
         for task in tasks_completed:
-            print(f"\t{task['title']}")
+            print(f"\t {task['title']}")
