@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """A Python script to, using this REST API, for a given employee ID."""
 
+import json
 import requests
 from sys import argv, exit
-import json
 
 
 if __name__ == '__main__':
