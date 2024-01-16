@@ -16,17 +16,9 @@ def number_of_subscribers(subreddit):
     # Api request
     response = requests.get(api_url, headers=headers, allow_redirects=False)
 
-    if response.status_code == 200:
-        data = response.json()
-        subscribers_count = data['data']['subscribers']
-        return (subscribers_count)
-    elif response.status_code == 302:
-        print("Subreddit {} is a redirect.".format(subreddit))
+    if response.status_code == 404:
         return (0)
-    elif response.status_code == 404:
-        print("Subreddit {} is not fount.".format(subreddit))
-        return (0)
-    else:
-        # Handling other errors
-        print(f"Error {response.status_code}: Unable to fetch data.")
-        return (0)
+    data = response.json()
+    #subscribers_count = data['data']['subscribers']
+    subscribers_count = data.get('data')
+    return (subscribers_count.get('subscribers'))
