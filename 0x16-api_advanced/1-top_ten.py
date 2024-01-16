@@ -20,8 +20,8 @@ def top_ten(subreddit):
             print("No posts found in the subreddit.")
 
     elif response.status_code == 302:
-        print(f"Subreddit '{subreddit}' is redirect."
-                + "Please provide a valid subreddit.")
+        print(f"Subreddit '{subreddit}' is redirect.", end="")
+        print("Please provide a valid subreddit.")
 
     elif response.status_code == 404:
         print(f"Subreddit '{subreddit}' not found.")
