@@ -4,21 +4,13 @@
 import requests
 
 
-URL = 'https://www.reddit.com'
-
-
 def number_of_subscribers(subreddit):
     """ A function to return total number of subscribers of a subreddit."""
+    URL = 'https://www.reddit.com'
+
     api_headers = {
             'Accept': 'application/json',
-            'User-Agent': ' '.join([
-                'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-                'AppleWebKit/537.36 (KHTML, like Gecko)',
-                'Chrome/120.0.0.0',
-                'Safari/537.36',
-                'Gecko/geckotrail',
-                'Firefox/firefoxversion'
-                ])
+            'User-Agent': 'CustomUserAgent'
             }
     response = requests.get(
             '{}/r/{}/about/.json'.format(URL, subreddit),
@@ -26,6 +18,7 @@ def number_of_subscribers(subreddit):
             allow_redirects=False
             )
     results = response.json()
+
     if response.status_code == 200:
         return (results['data']['subscribers'])
     return (0)
