@@ -17,14 +17,6 @@ def top_ten(subreddit):
             for post in data['data']['children'][:10]:
                 print(post['data']['title'])
         else:
-            print("No posts found in the subreddit.")
-
-    elif response.status_code == 302:
-        print(f"Subreddit '{subreddit}' is redirect.", end="")
-        print("Please provide a valid subreddit.")
-
-    elif response.status_code == 404:
-        print(f"Subreddit '{subreddit}' not found.")
-
+            print(None)
     else:
-        print(f"Error {response.status_code}: Unable to fetch data.")
+        print(None)
