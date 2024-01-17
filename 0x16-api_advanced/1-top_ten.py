@@ -1,22 +1,35 @@
 #!/usr/bin/python3
-"""Top Ten file script by advanced api of reddit api."""
-
+'''A module containing functions for working with the Reddit API.
+'''
 import requests
 
 
+BASE_URL = 'https://www.reddit.com'
+'''Reddit's base API URL.
+'''
+
+
 def top_ten(subreddit):
-    """A function to return titles of the first 10 hot posts listed."""
-
-    api_url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    headers = {'UserAgent': 'CustomUserAgent'}
-    response = requests.get(api_url, headers=headers, allow_redirects=False)
-
+    '''Retrieves the title of the top ten posts from a given subreddit.
+    '''
+    headers = {
+        'Accept': 'application/json',
+        'User-Agent': 'CustomUserAgent'
+    }
+    sort = 'top'
+    limit = 10
+    response = requests.get(
+        '{}/r/{}/.json?sort={}&limit={}'.format(
+            BASE_URL,
+            subreddit,
+            sort,
+            limit
+        ),
+        headers=headers,
+        allow_redirects=False
+    )
     if response.status_code == 200:
-        data = response.json()
-        if 'data' in data and 'children' in data['data']:
-            for post in data['data']['children'][:10]:
-                print(post['data']['title'])
-        else:
-            print(None)
+        for post in response.json()['data']['children'][0:10]:
+            print(post['data']['title'])
     else:
         print(None)
