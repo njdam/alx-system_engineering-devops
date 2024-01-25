@@ -132,7 +132,37 @@ Repo:
 GitHub repository: alx-system_engineering-devops
 Directory: 0x1B-web_stack_debugging_4
 File: 0-the_sky_is_the_limit_not.pp
-  
+
+<h3>Explaination of code:</h3>
+
+This Puppet code uses the exec resource type to execute a shell command. Let's break down the code:
+
+`puppet`
+```
+exec { 'fix--for-nginx':
+  command => "bash -c \"sed -iE 's/^ULIMIT=.*/ULIMIT=\\\"-n 8192\\\"/' \
+/etc/default/nginx; service nginx restart\"",
+  path    => '/usr/bin:/usr/sbin:/bin'
+}
+```
+
+[Explanation:]()
+
+`exec { 'fix--for-nginx': ... }`: Defines an exec resource named '`fix--for-nginx`'. This resource type allows you to execute commands.
+
+`command => "bash -c \"...\""`: Specifies the command to be executed. It uses the `bash -c` syntax to run the command in a new shell.
+
+The command itself is a combination of two commands separated by a semicolon (`;`). These commands are executed sequentially.
+
+The first command is a `sed` command that uses regular expressions to modify the `/etc/default/nginx` file. It replaces the line that starts with '`ULIMIT=`' with '`ULIMIT="-n 8192"`'. This is a common pattern in Linux configuration files, where `sed` is used to perform in-place replacements.
+
+The second command is service nginx restart, which restarts the Nginx service.
+
+`path => '/usr/bin:/usr/sbin:/bin'`: Specifies the directories to search for the executable command. In this case, it includes `/usr/bin`, `/usr/sbin`, and `/bin`. This is important because both bash and sed commands need to be located.
+
+[Note That:]() In summary, this Puppet code is intended to fix an issue related to the ULIMIT configuration in the Nginx default configuration file. It uses sed to modify the file and then restarts the Nginx service. The exec resource is used to execute these commands.
+
+
 1. User limit
 #advanced
 Change the OS configuration so that it is possible to login with the holberton user and open a file without any error message.
@@ -184,3 +214,34 @@ Repo:
 GitHub repository: alx-system_engineering-devops
 Directory: 0x1B-web_stack_debugging_4
 File: 1-user_limit.pp
+
+<h3>Explaination of Code Task 1:</h3>
+
+This Puppet code uses the exec resource type to execute a shell command. Let's break down the code:
+
+`puppet`
+```
+exec { 'change-os-configuration-for-holberton-user':
+  command => "bash -c \"sed -iE 's/^holberton hard nofile \
+5/holberton hard nofile 88888/' /etc/security/limits.conf; \
+sed -iE 's/^holberton soft nofile 4/holberton soft nofile 88888/' \
+/etc/security/limits.conf\"",
+  path    => '/usr/bin:/usr/sbin:/bin'
+}
+```
+
+[Explanation:]()
+
+`exec { 'change-os-configuration-for-holberton-user': ... }`: Defines an exec resource named 'change-os-configuration-for-holberton-user'. This resource type allows you to execute commands.
+
+`command => "bash -c \"...\""`: Specifies the command to be executed. It uses the bash -c syntax to run the command in a new shell.
+
+The command itself is a combination of two `sed` commands separated by a semicolon (`;`). These sed commands are used to modify the `/etc/security/limits.conf` file.
+
+The first `sed` command replaces the line that starts with '`holberton hard nofile 5`' with '`holberton hard nofile 88888`'.
+
+The second `sed` command replaces the line that starts with '`holberton soft nofile 4`' with '`holberton soft nofile 88888`'.
+
+`path => '/usr/bin:/usr/sbin:/bin'`: Specifies the directories to search for the executable command. In this case, it includes `/usr/bin`, `/usr/sbin`, and `/bin`. This is important because the bash command needs to be located.
+
+[Note That:]() In summary, this Puppet code is intended to modify the `limits.conf` file for the '`holberton`' user, specifically adjusting the '`nofile`' (file descriptor) limits for both '`hard`' and '`soft`' values. The exec resource is used to run the necessary `sed` commands to make these changes.
