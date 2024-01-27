@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 # A Bash script tells the master Gunicorn renewed all the workers.
-
-# Restart Gunicorn
-sudo systemctl daemon-reload
-sudo systemctl restart gunicorn
-
-# Wait for a short period (e.g., 2 seconds)
-sleep 0.1
+main_pid=$(sudo systemctl status gunicorn | grep 'Main PID' | awk '{print $3}')
 
 # Optionally, send a HUP signal to the Gunicorn master process
-(sudo pkill -HUP -f '[g]unicorn' > /dev/null 2>&1) &
-echo 'Gunicorn has been successfully reloaded.'
-
-# Note: You can adjust the sleep duration based on your specific application and server environment
+sudo kill -HUP "$main_pid"
