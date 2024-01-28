@@ -1,3 +1,27 @@
 #!/usr/bin/env bash
 # A Bash script tells the master Gunicorn renewed all the workers.
-sudo nohup pkill -HUP -f '[g]unicorn' > /dev/null 2>&1 &
+#sudo nohup pkill -HUP -f '[g]unicorn' > /dev/null 2>&1 &
+
+# 1. Get the master process ID (PID) of Gunicorn
+gunicorn_master_pid=$(ps auxf | pgrep gunicorn | grep -v grep | head -n 1 | awk '{print $2}')
+
+# 2. Check if the master process is running
+if [[ -z "$gunicorn_master_pid" ]]; then
+  echo "Gunicorn master process is not running."
+  exit 1
+fi
+
+# 3. Send the USR2 signal to the master process to gracefully reload workers
+kill -s USR2 "$gunicorn_master_pid"
+
+# 4. Wait for a few seconds to allow for worker renewal
+sleep 5
+
+# 5. Verify that the workers have been reloaded
+new_gunicorn_workers=$(ps auxf | pgrep gunicorn | grep -v grep | grep -v "$gunicorn_master_pid")
+if [[ -z "$new_gunicorn_workers" ]]; then
+  echo "Failed to reload Gunicorn workers."
+  exit 1
+fi
+
+echo "Gunicorn workers have been reloaded successfully."
